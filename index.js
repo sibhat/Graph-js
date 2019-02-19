@@ -43,8 +43,9 @@ class Graph{
         let visited = {};
         let result = [];
         visited[start] = true;
+        let currentVertex;
         while(stack.length){
-          let currentVertex = stack.pop();
+            currentVertex = stack.pop();
             result.push(currentVertex);
               this.adjacentList[currentVertex].forEach(child => {
                   if(!visited[child]){
@@ -58,11 +59,11 @@ class Graph{
         let stack = [start];
         let visited = {};
         let result = [];
+        let currentVertex;
         visited[start] = true;
         while(stack.length){
-          let currentVertex = stack.shift();
+            currentVertex = stack.shift();
               result.push(currentVertex);
-              
               this.adjacentList[currentVertex].forEach(child => {
                 if(!visited[child]){
                   visited[child] = true;
@@ -75,22 +76,3 @@ class Graph{
     
 }
 
-let v = new Graph();
-
-v.addVertex("A");
-v.addVertex("B");
-v.addVertex("C");
-v.addVertex("D");
-v.addVertex("E");
-v.addVertex("F");
-
-v.addEdges("A", "B");
-v.addEdges("A", "C");
-v.addEdges("B", "D");
-v.addEdges("C", "E");
-v.addEdges("D", "E");
-v.addEdges("D", "F");
-v.addEdges("E", "F");
-
-let starting = "A";
-v.breathFirstSearchLoop(starting);
